@@ -3,15 +3,14 @@ import { useState, useEffect } from 'react';
 const About = ({ URL }) => {
 	const [about, setAbout] = useState(null);
 
-	const getAboutData = async () => {
-		const response = await fetch(URL + 'about');
-		const data = await response.json();
-		setAbout(data);
-	};
-
 	useEffect(() => {
+		const getAboutData = async () => {
+			const response = await fetch(URL + 'about');
+			const data = await response.json();
+			setAbout(data);
+		};
 		getAboutData();
-	}, []);
+	}, [URL]);
 
 	return (
 		<div>

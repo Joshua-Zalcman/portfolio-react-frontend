@@ -3,15 +3,14 @@ import { useState, useEffect } from 'react';
 const Projects = ({ URL }) => {
 	const [projects, setProjects] = useState(null);
 
-	const getProjectsData = async () => {
-		const response = await fetch(URL + 'projects');
-		const data = await response.json();
-		setProjects(data);
-	};
-
 	useEffect(() => {
+		const getProjectsData = async () => {
+			const response = await fetch(URL + 'projects');
+			const data = await response.json();
+			setProjects(data);
+		};
 		getProjectsData();
-	}, []);
+	}, [URL]);
 
 	const loaded = () => {
 		return projects.map((project, index) => (
